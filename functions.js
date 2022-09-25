@@ -26,12 +26,11 @@ function calculateTotal(basePrice, state, tax=0.05) {
         fee = (0.03 * subtotal);
     } else if (state === 'PA') {
         fee = 2;
+    } else if (state === 'MA' && basePrice <= 100) {
+        fee = 1;
     } else if (state === 'MA') {
-        if (basePrice <= 100) {
-            fee = 1;
-        } else {
-            fee = 3;
-        }
+        fee = 3;
     }
     return subtotal + fee;
 }
+    
