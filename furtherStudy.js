@@ -14,10 +14,10 @@ function wordsInCommon(words1, words2) {
   return Array.from(result);
 }
 
-function kidsGame(names) {  
+function kidsGame(names) {
 
   const output = [names.shift()];
-  
+
   const firstLetterToWords = {};
 
   for (const name of names) {
@@ -30,22 +30,26 @@ function kidsGame(names) {
   }
 
   while (true) {
-    let lastWord = (output.length-1);
-    let lastLetter = (lastWord.length-1);
+    // console.log(output);
+    let lastWord = output[output.length - 1];
 
-    let startLetter = output[lastWord][lastLetter];
-    console.log(startLetter);
-    console.log(output.length-1);
+    let startLetter = lastWord[lastWord.length - 1];
 
     if (!(firstLetterToWords.hasOwnProperty(startLetter))) {
-      break
+      break;
     }
 
     let word = firstLetterToWords[startLetter].shift();
+    if (word === undefined) {
+      break;
+    }
     output.push(word);
-
   }
-
-    return output;
+  return output;
 
 }
+
+
+let test = kidsGame(["bagon", "baltoy", "yamask", "starly","nosepass",
+"kalob", "nicky", "booger"]);
+console.log(test)
